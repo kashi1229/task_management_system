@@ -1,21 +1,22 @@
-import { useState, useEffect } from 'react';
-import { PRIORITIES, CATEGORIES, DEFAULT_TASK } from '../utils/constants';
+import { useState } from 'react';
+import { PRIORITIES, CATEGORIES } from '../utils/constants';
+
+function getInitialForm(initialData) {
+  if (initialData) {
+    return {
+      title: initialData.title || '',
+      description: initialData.description || '',
+      priority: initialData.priority || 'Medium',
+      category: initialData.category || 'Other',
+      dueDate: initialData.dueDate || '',
+    };
+  }
+  return { title: '', description: '', priority: 'Medium', category: 'Other', dueDate: '' };
+}
 
 export default function TaskForm({ initialData, onSubmit, submitLabel }) {
-  const [form, setForm] = useState(DEFAULT_TASK);
+  const [form, setForm] = useState(() => getInitialForm(initialData));
   const [errors, setErrors] = useState({});
-
-  useEffect(() => {
-    if (initialData) {
-      setForm({
-        title: initialData.title || '',
-        description: initialData.description || '',
-        priority: initialData.priority || 'Medium',
-        category: initialData.category || 'Other',
-        dueDate: initialData.dueDate || '',
-      });
-    }
-  }, [initialData]);
 
   const validate = () => {
     const newErrors = {};
