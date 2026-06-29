@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useTasks } from './context/TaskContext';
 import Header from './components/Header';
@@ -8,18 +9,25 @@ import EditTask from './pages/EditTask';
 function AppContent() {
   const { theme } = useTasks();
 
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [theme]);
+
   return (
-    <div className={theme === 'dark' ? 'dark' : ''}>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white">
-        <Header />
-        <main>
-          <Routes>
-            <Route path="/" element={<TaskList />} />
-            <Route path="/add" element={<AddTask />} />
-            <Route path="/edit/:id" element={<EditTask />} />
-          </Routes>
-        </main>
-      </div>
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-925 transition-colors duration-300">
+      <Header />
+      <main className="transition-colors duration-300">
+        <Routes>
+          <Route path="/" element={<TaskList />} />
+          <Route path="/add" element={<AddTask />} />
+          <Route path="/edit/:id" element={<EditTask />} />
+        </Routes>
+      </main>
     </div>
   );
 }

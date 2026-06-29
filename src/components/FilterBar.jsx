@@ -4,16 +4,17 @@ const FILTER_OPTIONS = ['All', ...PRIORITIES];
 
 export default function FilterBar({ activeFilter, onFilterChange }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    <div className="flex items-center gap-1 p-1 bg-slate-100 dark:bg-slate-800/50 rounded-xl">
       {FILTER_OPTIONS.map((filter) => (
         <button
           key={filter}
           onClick={() => onFilterChange(filter)}
-          className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+          className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
             activeFilter === filter
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700'
+              ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm'
+              : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'
           }`}
+          aria-pressed={activeFilter === filter}
         >
           {filter}
         </button>
