@@ -1,7 +1,8 @@
 {
-  "name": "usman",
+  "name": "taskflow",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "A modern task management app with priorities, categories, search, filter, dark mode, and localStorage persistence. Built with React 19, Vite 8, and Tailwind CSS v4.",
   "type": "module",
   "scripts": {
     "dev": "vite",

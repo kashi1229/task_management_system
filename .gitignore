@@ -11,7 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+CLAUDE.md
 
+context
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -24,3 +26,4 @@ dist-ssr
 *.sw?
 .opencode
 .claude
+CLAUDE.md
